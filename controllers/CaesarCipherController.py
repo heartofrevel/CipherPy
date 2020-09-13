@@ -1,23 +1,22 @@
 from flask import request
-from ciphers.MonoAlphabeticSubstitutionCipher import MonoAlphabeticSubstitutionCipher
+from ciphers.CaesarCipher import CaesarCipher
 from models.ResultModels import CryptoResult
 from models.ResultModels import ErrorResult
 from flask import Blueprint
 
-masc = Blueprint('masc', __name__)
+caesar = Blueprint('caesar', __name__)
 
 
-@masc.route('/masc/encrypt', methods=['POST'])
+@caesar.route('/caesar/encrypt', methods=['POST'])
 def encrypt():
     if not request.is_json:
         error = ErrorResult("Malformed Request : Request should be in JSON format")
         return error.json(), 400
     data = request.get_json()
     input_pt = data.get('input')
-    key_pt = data.get('key_pt')
-    key_ct = data.get('key_ct')
+    key = data.get('key')
     try:
-        algo = MonoAlphabeticSubstitutionCipher(key_pt, key_ct)
+        algo = CaesarCipher(key)
         cipher = algo.encrypt(input_pt)
         result = CryptoResult(input_pt, cipher)
         return result.json(), 200
@@ -26,17 +25,16 @@ def encrypt():
         return error.json(), 400
 
 
-@masc.route('/masc/decrypt', methods=['POST'])
+@caesar.route('/caesar/decrypt', methods=['POST'])
 def decrypt():
     if not request.is_json:
         error = ErrorResult("Malformed Request : Request should be in JSON format")
         return error.json(), 400
     data = request.get_json()
     input_ct = data.get('input')
-    key_pt = data.get('key_pt')
-    key_ct = data.get('key_ct')
+    key = data.get('key')
     try:
-        algo = MonoAlphabeticSubstitutionCipher(key_pt, key_ct)
+        algo = CaesarCipher(key)
         plain = algo.decrypt(input_ct)
         result = CryptoResult(plain, input_ct)
         return result.json(), 200
