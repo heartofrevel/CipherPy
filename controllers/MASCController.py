@@ -1,15 +1,14 @@
-import flask
 from flask import request
 from ciphers.MonoAlphabeticSubstitutionCipher import MonoAlphabeticSubstitutionCipher
 from models.ResultModels import CryptoResult
 from models.ResultModels import ErrorResult
+from flask import Blueprint
 
-app = flask.Flask(__name__)
-app.config["DEBUG"] = True
+masc = Blueprint('masc', __name__)
 
 
-@app.route('/masc/encrypt', methods=['POST'])
-def masc_encrypt():
+@masc.route('/masc/encrypt', methods=['POST'])
+def encrypt():
     if not request.is_json:
         return "Request is not json"
     data = request.get_json()
@@ -26,8 +25,8 @@ def masc_encrypt():
         return error.json(), 400
 
 
-@app.route('/masc/decrypt', methods=['POST'])
-def masc_decrypt():
+@masc.route('/masc/decrypt', methods=['POST'])
+def decrypt():
     if not request.is_json:
         return "Request is not json"
     data = request.get_json()
@@ -43,5 +42,3 @@ def masc_decrypt():
         error = ErrorResult(str(e))
         return error.json(), 400
 
-
-app.run()
