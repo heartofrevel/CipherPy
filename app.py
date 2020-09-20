@@ -5,6 +5,7 @@ from controllers.AffineCipherController import affine
 from controllers.VigenereCipherController import vigenere
 from controllers.AtbashCipherController import atbash
 from controllers.Rot13CipherController import rot13
+from controllers.BeaufortCipherController import beaufort
 
 app = flask.Flask(__name__, static_url_path='', static_folder='')
 app.register_blueprint(masc)
@@ -13,6 +14,7 @@ app.register_blueprint(affine)
 app.register_blueprint(vigenere)
 app.register_blueprint(atbash)
 app.register_blueprint(rot13)
+app.register_blueprint(beaufort)
 
 
 @app.route('/', methods=['GET'])

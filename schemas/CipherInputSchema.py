@@ -37,4 +37,10 @@ class Rot13Schema(Schema):
     preserve_spaces = fields.Boolean(required=False, missing=False)
 
 
+class BeaufortSchema(Schema):
+    input = fields.String(required=True)
+    key = fields.String(required=True)
+    preserve_spaces = fields.Boolean(required=False, missing=False)
+
+
 
