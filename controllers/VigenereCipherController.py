@@ -1,18 +1,18 @@
 from flask import request, Blueprint
 from marshmallow import ValidationError
 
-from ciphers.CaesarCipher import CaesarCipher
+from ciphers.VigenereCipher import VigenereCipher
 from models.ResultModels import CryptoResult, ErrorResult
-from schemas.CipherInputSchema import CaesarSchema
+from schemas.CipherInputSchema import VigenereSchema
 
-caesar = Blueprint('caesar', __name__)
+vigenere = Blueprint('vigenere', __name__)
 
 
-@caesar.route('/caesar/encrypt', methods=['POST'])
+@vigenere.route('/vigenere/encrypt', methods=['POST'])
 def encrypt():
     try:
         data = request.json
-        schema = CaesarSchema()
+        schema = VigenereSchema()
         data = schema.load(data)
     except ValidationError as e:
         error = ErrorResult(e.messages)
@@ -25,8 +25,8 @@ def encrypt():
     key = data.get('key')
     preserve_spaces = data.get('preserve_spaces')
     try:
-        algo = CaesarCipher(key, preserve_spaces)
-        cipher = algo.encrypt(input_pt)
+        algo = VigenereCipher(key, input_pt, preserve_spaces)
+        cipher = algo.encrypt()
         result = CryptoResult(input_pt, cipher)
         return result.json(), 200
     except Exception as e:
@@ -34,11 +34,11 @@ def encrypt():
         return error.json(), 400
 
 
-@caesar.route('/caesar/decrypt', methods=['POST'])
+@vigenere.route('/vigenere/decrypt', methods=['POST'])
 def decrypt():
     try:
         data = request.json
-        schema = CaesarSchema()
+        schema = VigenereSchema()
         data = schema.load(data)
     except ValidationError as e:
         error = ErrorResult(e.messages)
@@ -51,8 +51,8 @@ def decrypt():
     key = data.get('key')
     preserve_spaces = data.get('preserve_spaces')
     try:
-        algo = CaesarCipher(key, preserve_spaces)
-        plain = algo.decrypt(input_ct)
+        algo = VigenereCipher(key, input_ct, preserve_spaces)
+        plain = algo.decrypt()
         result = CryptoResult(plain, input_ct)
         return result.json(), 200
     except Exception as e:

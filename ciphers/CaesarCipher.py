@@ -1,34 +1,28 @@
-
 class CaesarCipher:
-    def __init__(self, key):
+    def __init__(self, key, preserve_spaces=False):
         self.key = key
+        self.preserve_spaces = preserve_spaces
 
     def encrypt(self, plain_text):
-        cipher = ""
-        try :
-            for character in plain_text:
-                if character == " ":
-                    cipher += character
-                else:
-                    if character.isupper():
-                        cipher += chr((ord(character) + self.key - 65) % 26 + 65)
-                    else:
-                        cipher += chr((ord(character) + self.key - 97) % 26 + 97)
+        try:
+            if self.preserve_spaces:
+                cipher = ''.join(chr((ord(char) + self.key - 65) % 26 + 65) if char.isupper() else chr(
+                    (ord(char) + self.key - 97) % 26 + 97) if char.islower() else ' ' for char in plain_text)
+            else:
+                cipher = ''.join(chr((ord(char) + self.key - 65) % 26 + 65) if char.isupper() else chr(
+                    (ord(char) + self.key - 97) % 26 + 97) for char in plain_text.replace(' ', ''))
         except Exception as e:
             raise Exception("Error while encrypting, please check your input : " + str(e))
         return cipher
 
     def decrypt(self, cipher_text):
-        plain = ""
         try:
-            for character in cipher_text:
-                if character == " ":
-                    plain += character
-                else:
-                    if character.isupper():
-                        plain += chr((ord(character) - self.key - 65) % 26 + 65)
-                    else:
-                        plain += chr((ord(character) - self.key - 97) % 26 + 97)
+            if self.preserve_spaces:
+                plain = ''.join(chr((ord(char) - self.key - 65) % 26 + 65) if char.isupper() else chr(
+                    (ord(char) - self.key - 97) % 26 + 97) if char.islower() else ' ' for char in cipher_text)
+            else:
+                plain = ''.join(chr((ord(char) - self.key - 65) % 26 + 65) if char.isupper() else chr(
+                    (ord(char) - self.key - 97) % 26 + 97) for char in cipher_text.replace(' ', ''))
         except Exception as e:
             raise Exception("Error while encrypting, please check your input : " + str(e))
         return plain
