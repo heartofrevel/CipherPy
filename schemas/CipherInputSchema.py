@@ -32,4 +32,9 @@ class AtbashSchema(Schema):
     preserve_spaces = fields.Boolean(required=False, missing=False)
 
 
+class Rot13Schema(Schema):
+    input = fields.String(required=True)
+    preserve_spaces = fields.Boolean(required=False, missing=False)
+
+
 

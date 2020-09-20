@@ -1,0 +1,626 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "version" : "1.0.0",
+    "title" : "CipherPy",
+    "description" : "APIs written in Python to encrypt and decrypt in various ciphers."
+  },
+  "paths" : {
+    "/masc/encrypt" : {
+      "post" : {
+        "summary" : "Mono Alphabetic Substitution Cipher:Encrypt",
+        "description" : "This API endpoint encrypts the given input using Mono Alphabetic Substitution Cipher",
+        "tags" : [ "masc" ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ResponseOK"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "INVALID INPUT",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ResponseINVALID"
+                }
+              }
+            }
+          }
+        },
+        "requestBody" : {
+          "$ref" : "#/components/requestBodies/MascInput"
+        }
+      }
+    },
+    "/masc/decrypt" : {
+      "post" : {
+        "summary" : "Mono Alphabetic Substitution Cipher:Decrypt",
+        "description" : "This API endpoint decrypts the given input using Mono Alphabetic Substitution Cipher",
+        "tags" : [ "masc" ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ResponseOK"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "INVALID INPUT",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ResponseINVALID"
+                }
+              }
+            }
+          }
+        },
+        "requestBody" : {
+          "$ref" : "#/components/requestBodies/MascInput"
+        }
+      }
+    },
+    "/caesar/encrypt" : {
+      "post" : {
+        "summary" : "Caesar Cipher:Encrypt",
+        "description" : "This API endpoint encrypts the given input using Caesar Cipher",
+        "tags" : [ "caesar-cipher" ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ResponseOK"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "INVALID INPUT",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ResponseINVALID"
+                }
+              }
+            }
+          }
+        },
+        "requestBody" : {
+          "$ref" : "#/components/requestBodies/CaesarInput"
+        }
+      }
+    },
+    "/caesar/decrypt" : {
+      "post" : {
+        "summary" : "Caesar Cipher:Decrypt",
+        "description" : "This API endpoint decrypts the given input using Caesar Cipher",
+        "tags" : [ "caesar-cipher" ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ResponseOK"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "INVALID INPUT",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ResponseINVALID"
+                }
+              }
+            }
+          }
+        },
+        "requestBody" : {
+          "$ref" : "#/components/requestBodies/CaesarInput"
+        }
+      }
+    },
+    "/affine/encrypt" : {
+      "post" : {
+        "summary" : "Affine Cipher:Encrypt",
+        "description" : "This API endpoint encrypts the given input using Affine Cipher",
+        "tags" : [ "affine-cipher" ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ResponseOK"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "INVALID INPUT",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ResponseINVALID"
+                }
+              }
+            }
+          }
+        },
+        "requestBody" : {
+          "$ref" : "#/components/requestBodies/AffineInput"
+        }
+      }
+    },
+    "/affine/decrypt" : {
+      "post" : {
+        "summary" : "Affine Cipher:Decrypt",
+        "description" : "This API endpoint decrypts the given input using Affine Cipher",
+        "tags" : [ "affine-cipher" ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ResponseOK"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "INVALID INPUT",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ResponseINVALID"
+                }
+              }
+            }
+          }
+        },
+        "requestBody" : {
+          "$ref" : "#/components/requestBodies/AffineInput"
+        }
+      }
+    },
+    "/vigenere/encrypt" : {
+      "post" : {
+        "summary" : "Vigenere Cipher:Encrypt",
+        "description" : "This API endpoint encrypts the given input using Vigenere Cipher",
+        "tags" : [ "vigenere-cipher" ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ResponseOK"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "INVALID INPUT",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ResponseINVALID"
+                }
+              }
+            }
+          }
+        },
+        "requestBody" : {
+          "$ref" : "#/components/requestBodies/VigenereInput"
+        }
+      }
+    },
+    "/vigenere/decrypt" : {
+      "post" : {
+        "summary" : "Vigenere Cipher:Decrypt",
+        "description" : "This API endpoint decrypts the given input using Vigenere Cipher",
+        "tags" : [ "vigenere-cipher" ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ResponseOK"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "INVALID INPUT",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ResponseINVALID"
+                }
+              }
+            }
+          }
+        },
+        "requestBody" : {
+          "$ref" : "#/components/requestBodies/VigenereInput"
+        }
+      }
+    },
+    "/atbash/encrypt" : {
+      "post" : {
+        "summary" : "Atbash Cipher:Encrypt",
+        "description" : "This API endpoint encrypts the given input using Atbash Cipher",
+        "tags" : [ "atbash-cipher" ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ResponseOK"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "INVALID INPUT",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ResponseINVALID"
+                }
+              }
+            }
+          }
+        },
+        "requestBody" : {
+          "$ref" : "#/components/requestBodies/AtbashInput"
+        }
+      }
+    },
+    "/atbash/decrypt" : {
+      "post" : {
+        "summary" : "Atbash Cipher:Decrypt",
+        "description" : "This API endpoint decrypts the given input using Atbash Cipher",
+        "tags" : [ "atbash-cipher" ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ResponseOK"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "INVALID INPUT",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ResponseINVALID"
+                }
+              }
+            }
+          }
+        },
+        "requestBody" : {
+          "$ref" : "#/components/requestBodies/AtbashInput"
+        }
+      }
+    },
+    "/rot13/encrypt" : {
+      "post" : {
+        "summary" : "Rot13 Cipher:Encrypt",
+        "description" : "This API endpoint encrypts the given input using Rot13 Cipher",
+        "tags" : [ "rot13-cipher" ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ResponseOK"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "INVALID INPUT",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ResponseINVALID"
+                }
+              }
+            }
+          }
+        },
+        "requestBody" : {
+          "$ref" : "#/components/requestBodies/Rot13Input"
+        }
+      }
+    },
+    "/rot13/decrypt" : {
+      "post" : {
+        "summary" : "Rot13 Cipher:Encrypt",
+        "description" : "This API endpoint encrypts the given input using Rot13 Cipher",
+        "tags" : [ "rot13-cipher" ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ResponseOK"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "INVALID INPUT",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ResponseINVALID"
+                }
+              }
+            }
+          }
+        },
+        "requestBody" : {
+          "$ref" : "#/components/requestBodies/Rot13Input"
+        }
+      }
+    }
+  },
+  "servers" : [ {
+    "url" : "https://apps.heartofrevel.com/cipherpy"
+  } ],
+  "components" : {
+    "schemas" : {
+      "ResponseOK" : {
+        "type" : "object",
+        "properties" : {
+          "plain_text" : {
+            "type" : "string",
+            "description" : "Resulting Plain Text",
+            "example" : "PLAINTEXT"
+          },
+          "cipher_text" : {
+            "type" : "string",
+            "description" : "Resulting Cipher Text",
+            "example" : "ENCRYPTED"
+          }
+        }
+      },
+      "ResponseINVALID" : {
+        "type" : "object",
+        "properties" : {
+          "error" : {
+            "type" : "string",
+            "description" : "Resulting Plain Text",
+            "example" : "BAD REQUEST"
+          }
+        }
+      }
+    },
+    "requestBodies" : {
+      "MascInput" : {
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "type" : "object",
+              "required" : [ "input", "key_pt", "key_ct" ],
+              "properties" : {
+                "input" : {
+                  "type" : "string",
+                  "description" : "Input to encrypt or decrypt",
+                  "example" : "HEARTOFREVEL IS A DEVELOPER"
+                },
+                "key_pt" : {
+                  "type" : "string",
+                  "description" : "Plain Text part of the key",
+                  "example" : "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                },
+                "key_ct" : {
+                  "type" : "string",
+                  "description" : "Cipher Text part of the key",
+                  "example" : "EJUBCHXSYNMPZQRAGOFLTIKDVW"
+                },
+                "preserve_spaces" : {
+                  "type" : "boolean",
+                  "description" : "This parameter indicates whether you can to preserve spaces in decryped plain text or encrypted cipher text.",
+                  "example" : true
+                }
+              }
+            }
+          }
+        }
+      },
+      "CaesarInput" : {
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "type" : "object",
+              "required" : [ "input", "key" ],
+              "properties" : {
+                "input" : {
+                  "type" : "string",
+                  "description" : "Input to encrypt or decrypt",
+                  "example" : "HEARTOFREVEL IS A DEVELOPER"
+                },
+                "key" : {
+                  "type" : "integer",
+                  "description" : "Key for number of shifts",
+                  "example" : 3
+                },
+                "preserve_spaces" : {
+                  "type" : "boolean",
+                  "description" : "This parameter indicates whether you can to preserve spaces in decryped plain text or encrypted cipher text.",
+                  "example" : true
+                }
+              }
+            }
+          }
+        }
+      },
+      "AffineInput" : {
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "type" : "object",
+              "required" : [ "input", "key1", "key2" ],
+              "properties" : {
+                "input" : {
+                  "type" : "string",
+                  "description" : "Input to encrypt or decrypt",
+                  "example" : "HEARTOFREVEL IS A DEVELOPER"
+                },
+                "key1" : {
+                  "type" : "integer",
+                  "description" : "key1 should be prime length of input, check blog page for more info",
+                  "example" : 1
+                },
+                "key2" : {
+                  "type" : "integer",
+                  "description" : "Any number",
+                  "example" : 1
+                },
+                "preserve_spaces" : {
+                  "type" : "boolean",
+                  "description" : "This parameter indicates whether you can to preserve spaces in decryped plain text or encrypted cipher text.",
+                  "example" : true
+                }
+              }
+            }
+          }
+        }
+      },
+      "VigenereInput" : {
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "type" : "object",
+              "required" : [ "input", "key" ],
+              "properties" : {
+                "input" : {
+                  "type" : "string",
+                  "description" : "Input to encrypt or decrypt",
+                  "example" : "HEARTOFREVEL IS A DEVELOPER"
+                },
+                "key" : {
+                  "type" : "string",
+                  "description" : "string keyword to encrypt with",
+                  "example" : "REVEL"
+                },
+                "preserve_spaces" : {
+                  "type" : "boolean",
+                  "description" : "This parameter indicates whether you can to preserve spaces in decryped plain text or encrypted cipher text.",
+                  "example" : true
+                }
+              }
+            }
+          }
+        }
+      },
+      "AtbashInput" : {
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "type" : "object",
+              "required" : [ "input" ],
+              "properties" : {
+                "input" : {
+                  "type" : "string",
+                  "description" : "Input to encrypt or decrypt",
+                  "example" : "HEARTOFREVEL IS A DEVELOPER"
+                },
+                "preserve_spaces" : {
+                  "type" : "boolean",
+                  "description" : "This parameter indicates whether you can to preserve spaces in decryped plain text or encrypted cipher text.",
+                  "example" : true
+                }
+              }
+            }
+          }
+        }
+      },
+      "Rot13Input" : {
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "type" : "object",
+              "required" : [ "input" ],
+              "properties" : {
+                "input" : {
+                  "type" : "string",
+                  "description" : "Input to encrypt or decrypt",
+                  "example" : "HEARTOFREVEL IS A DEVELOPER"
+                },
+                "preserve_spaces" : {
+                  "type" : "boolean",
+                  "description" : "This parameter indicates whether you can to preserve spaces in decryped plain text or encrypted cipher text.",
+                  "example" : true
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "tags" : [ {
+    "name" : "masc",
+    "description" : "APIs under Mono Alphabetic Substitution Cipher",
+    "externalDocs" : {
+      "description" : "Learn more about MASC",
+      "url" : "https://blog.heartofrevel.com/2020/09/12/substitution-cipher-where-it-all-started/"
+    }
+  }, {
+    "name" : "caesar-cipher",
+    "description" : "APIs under Caesar Cipher",
+    "externalDocs" : {
+      "description" : "Blog",
+      "url" : "https://blog.heartofrevel.com"
+    }
+  }, {
+    "name" : "affine-cipher",
+    "description" : "APIs under Affine Cipher",
+    "externalDocs" : {
+      "description" : "Blog",
+      "url" : "https://blog.heartofrevel.com"
+    }
+  }, {
+    "name" : "vigenere-cipher",
+    "description" : "APIs under Vigenere Cipher",
+    "externalDocs" : {
+      "description" : "Blog",
+      "url" : "https://blog.heartofrevel.com"
+    }
+  }, {
+    "name" : "atbash-cipher",
+    "description" : "APIs under Vigenere Cipher",
+    "externalDocs" : {
+      "description" : "Blog",
+      "url" : "https://blog.heartofrevel.com"
+    }
+  } ]
+}
